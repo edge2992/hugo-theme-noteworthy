@@ -27,7 +27,7 @@
     <!-- <link type="text/css" rel="stylesheet" href="{{ "/" | relURL }}css/custom.css"> -->
 
     <!-- syntax highlight -->
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/syntax.css" />
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/syntax.css" />
  
     {{ with .OutputFormats.Get "RSS" }}
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
