@@ -94,3 +94,36 @@
         width: 100%;
     }
 }
+
+@include media(1200px) {
+    .content-container {
+        max-width: 1200px;
+    }
+}
+
+@include media(1600px) {
+    .content-container {
+        max-width: 1400px;
+    }
+
+    body {
+        font-size: 110%;
+    }
+}
+
+@include media(2000px) {
+    .content-container {
+        max-width: 1600px;
+        margin-left: 340px;
+    }
+
+    // Slightly adjust sidebar width because text size increases
+    nav {
+        width: 270px;
+    }
+
+    body {
+        font-size: 120%;
+    }
+}
+
