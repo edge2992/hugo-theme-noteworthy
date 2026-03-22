@@ -503,6 +503,12 @@ footer {
     }
 }
 
+// MERMAID DIAGRAMS
+.mermaid {
+    text-align: center;
+    margin: 1.5em 0;
+}
+
 // BREAKPOINTS
 @import "partials/_breakpoints";
 @import "custom";
