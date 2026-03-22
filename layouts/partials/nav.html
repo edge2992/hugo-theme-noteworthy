@@ -1,5 +1,5 @@
 <!-- Sidebar navigation -->
-<nav>
+<nav aria-label="Main navigation">
   {{ partial "header.html" . }}
   <div class="nav-menu">
   {{ range .Site.Menus.main }}
@@ -9,6 +9,7 @@
   {{ if $rssOutput }}
     <a class="color-link nav-link" href="{{ $rssOutput.Permalink }}" target="_blank" rel="noopener" type="application/rss+xml">RSS</a>
   {{ end }}
+  {{ partial "theme-toggle.html" . }}
 </div>
 {{ partial "footer.html" . }}
 </nav>

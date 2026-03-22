@@ -1,0 +1,37 @@
+{{ if .Page.Store.Get "hasMermaid" }}
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  mermaid.initialize({
+    startOnLoad: false,
+    theme: 'base',
+    themeVariables: isDark
+      ? {
+          primaryColor: '#2a2a3e',
+          primaryTextColor: '#e0e0e0',
+          primaryBorderColor: '#63BDA2',
+          lineColor: '#63BDA2',
+          secondaryColor: '#16213e',
+          tertiaryColor: '#1a1a2e',
+          background: '#1a1a2e',
+          mainBkg: '#2a2a3e',
+          nodeBorder: '#63BDA2',
+          clusterBkg: '#16213e',
+          clusterBorder: '#63BDA2',
+          titleColor: '#e0e0e0',
+          edgeLabelBackground: '#2a2a3e',
+          nodeTextColor: '#e0e0e0'
+        }
+      : {
+          primaryColor: '#e8f5e9',
+          primaryTextColor: '#313537',
+          primaryBorderColor: '#63BDA2',
+          lineColor: '#5F5F5F',
+          secondaryColor: '#f7f7f7',
+          tertiaryColor: '#fff',
+          nodeTextColor: '#313537'
+        }
+  });
+  await mermaid.run({ nodes: document.querySelectorAll('.mermaid') });
+</script>
+{{ end }}

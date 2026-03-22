@@ -1,0 +1,23 @@
+[page]
+other = "ページ"
+
+[of]
+other = "/"
+
+[newer]
+other = "新しい記事"
+
+[older]
+other = "古い記事"
+
+[tagged]
+other = "タグ"
+
+[read_more]
+other = "続きを読む"
+
+[noteworthy_theme]
+other = "Noteworthy theme"
+
+[built_with_hugo]
+other = "Hugo で構築"

@@ -6,7 +6,7 @@ enableRobotsTXT = true
 paginate = 4 # Set the number of posts to show before overflowing to the next page.
 summaryLength = 10 # Configure how long the post summary should be on the homepage.
 
-# Add your Google Analytics identifier: UA-XXXXXXXX-X
+# Add your Google Analytics identifier (GA4): G-XXXXXXXXXX
 googleAnalytics = ""
 
 # Add your Disqus shortname here.
@@ -28,6 +28,12 @@ disqusShortname = ""
     description = "Noteworthy is a minimalist Hugo theme, perfect for writers and bloggers."
 
     showReadMore = false
+
+    # Custom fonts: Override CSS variables in assets/css/custom.scss
+    # Place font files in your site's static/fonts/ directory
+
+    # Default Open Graph image used when a page does not specify its own image.
+    # defaultOgImage = "images/og-default.png"
 
     # Set enableKofi to true to enable the Ko-fi support button. Add your Ko-fi ID to link to your account.
     enableKofi = false

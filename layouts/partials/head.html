@@ -18,21 +18,29 @@
     {{ $main_style := resources.Get "css/main.scss" | toCSS | minify | fingerprint }}
     <link rel="stylesheet" href="{{ $main_style.Permalink }}"/>
 
-    <!-- Uncomment to add custom styles -->
-    <!-- Modify the custom.scss file inside assets > css to use scss -->
-    <!-- {{ $custom_style := resources.Get "css/custom.scss" | toCSS | minify | fingerprint }} 
-    <link rel="stylesheet" href="{{ $custom_style.Permalink }}"/> -->
+    <!-- Custom styles (override theme variables in assets/css/custom.scss) -->
+    {{ $custom_style := resources.Get "css/custom.scss" | toCSS | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $custom_style.Permalink }}"/>
 
     <!-- Modify the custom.css file inside static > css to use vanilla css -->
     <!-- <link type="text/css" rel="stylesheet" href="{{ "/" | relURL }}css/custom.css"> -->
 
     <!-- syntax highlight -->
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/syntax.css" />
+    <link rel="stylesheet" href="{{ "css/syntax.css" | relURL }}" />
+    <link rel="stylesheet" href="{{ "css/syntax-dark.css" | relURL }}" />
  
     {{ with .OutputFormats.Get "RSS" }}
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
     {{ end }}
+    {{ partial "seo.html" . }}
+
     {{ if not hugo.IsServer }}
       {{ template "_internal/google_analytics.html" . }}
     {{ end }}
+    <script>
+      (function() {
+        var theme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
 </head>
