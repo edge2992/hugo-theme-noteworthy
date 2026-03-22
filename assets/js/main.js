@@ -22,9 +22,7 @@ function initThemeToggle() {
   const moonIcon = document.getElementById('theme-icon-moon');
 
   function getPreferredTheme() {
-    const stored = localStorage.getItem('theme');
-    if (stored) return stored;
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    return localStorage.getItem('theme') || 'light';
   }
 
   function setTheme(theme) {
