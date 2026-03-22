@@ -29,6 +29,9 @@ disqusShortname = ""
 
     showReadMore = false
 
+    # Custom fonts: Override CSS variables in assets/css/custom.scss
+    # Place font files in your site's static/fonts/ directory
+
     # Default Open Graph image used when a page does not specify its own image.
     # defaultOgImage = "images/og-default.png"
 
