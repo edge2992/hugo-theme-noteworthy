@@ -29,6 +29,9 @@ disqusShortname = ""
 
     showReadMore = false
 
+    # Default Open Graph image used when a page does not specify its own image.
+    # defaultOgImage = "images/og-default.png"
+
     # Set enableKofi to true to enable the Ko-fi support button. Add your Ko-fi ID to link to your account.
     enableKofi = false
     kofi = ""
