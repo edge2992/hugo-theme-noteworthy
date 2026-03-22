@@ -25,6 +25,55 @@ $code: Menlo,Monaco,"Courier New",monospace;
 @import "vendor/normalize";
 @import "vendor/syntax";
 
+/* CSS CUSTOM PROPERTIES ================================================================ */
+
+:root {
+  --color-primary: #63BDA2;
+  --color-bg: #fff;
+  --color-bg-secondary: #f7f7f7;
+  --color-text: #313537;
+  --color-text-secondary: #70798B;
+  --color-text-tertiary: #999;
+  --color-border: #eee;
+  --color-link: #313537;
+  --color-link-hover: #63BDA2;
+  --color-tag-bg: #f6f6f6;
+  --color-code-bg: #f4f4f4;
+  --color-nav-bg: #fafafa;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-primary: #63BDA2;
+    --color-bg: #1a1a2e;
+    --color-bg-secondary: #16213e;
+    --color-text: #e0e0e0;
+    --color-text-secondary: #a0a0b0;
+    --color-text-tertiary: #808090;
+    --color-border: #2a2a3e;
+    --color-link: #e0e0e0;
+    --color-link-hover: #63BDA2;
+    --color-tag-bg: #2a2a3e;
+    --color-code-bg: #2a2a3e;
+    --color-nav-bg: #16213e;
+  }
+}
+
+[data-theme="dark"] {
+  --color-primary: #63BDA2;
+  --color-bg: #1a1a2e;
+  --color-bg-secondary: #16213e;
+  --color-text: #e0e0e0;
+  --color-text-secondary: #a0a0b0;
+  --color-text-tertiary: #808090;
+  --color-border: #2a2a3e;
+  --color-link: #e0e0e0;
+  --color-link-hover: #63BDA2;
+  --color-tag-bg: #2a2a3e;
+  --color-code-bg: #2a2a3e;
+  --color-nav-bg: #16213e;
+}
+
 /* STYLES ========================================================================== */
 
 html,
@@ -41,10 +90,12 @@ html {
 }
 
 body {
-    color: $gray-dark;
+    background-color: var(--color-bg);
+    color: var(--color-text);
     font-family: $sans-serif;
     margin: 0;
     font-size: 1.1rem;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 // TEXT
@@ -52,7 +103,7 @@ article p {
     a {
         text-decoration: underline;
         text-decoration-skip-ink: auto;
-        color: $gray-dark;
+        color: var(--color-link);
     }
 }
 
@@ -86,14 +137,14 @@ h2 {
     a {
         text-decoration: none;
         position: relative;
-        text-shadow: 0px -2px 0 white, 0px -1px 0 white, 0px 0px 0 white, 2px -2px 0 white, 2px -1px 0 white, 2px 0px 0 white, -2px -2px 0 white, -2px -1px 0 white, -2px 0px 0 white, 1px -2px 0 white, 1px -1px 0 white, 1px 0px 0 white, -1px -2px 0 white, -1px -1px 0 white, -1px 0px 0 white, 0px -2px 0 white, 0px -1px 0 white, 0px 0px 0 white;
-        box-shadow: 0 -1px 0 0 white inset, 0 -2px 0 0 transparent inset;
+        text-shadow: 0px -2px 0 var(--color-bg), 0px -1px 0 var(--color-bg), 0px 0px 0 var(--color-bg), 2px -2px 0 var(--color-bg), 2px -1px 0 var(--color-bg), 2px 0px 0 var(--color-bg), -2px -2px 0 var(--color-bg), -2px -1px 0 var(--color-bg), -2px 0px 0 var(--color-bg), 1px -2px 0 var(--color-bg), 1px -1px 0 var(--color-bg), 1px 0px 0 var(--color-bg), -1px -2px 0 var(--color-bg), -1px -1px 0 var(--color-bg), -1px 0px 0 var(--color-bg), 0px -2px 0 var(--color-bg), 0px -1px 0 var(--color-bg), 0px 0px 0 var(--color-bg);
+        box-shadow: 0 -1px 0 0 var(--color-bg) inset, 0 -2px 0 0 transparent inset;
         background-size: 1px 1em;
         position: relative;
         transition: all 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
 
         &:hover {
-            box-shadow: 0 -1px 0 0 white inset, 0 -2px 0 0 $gray-dark inset;
+            box-shadow: 0 -1px 0 0 var(--color-bg) inset, 0 -2px 0 0 var(--color-text) inset;
             transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
         }
     }
@@ -122,7 +173,7 @@ p {
 a {
     text-decoration: underline;
     text-decoration-skip-ink: auto;
-    color: $gray-dark;
+    color: var(--color-link);
 }
 
 a,
@@ -131,25 +182,25 @@ a>svg {
 }
 
 a:visited {
-    color: $gray-dark;
+    color: var(--color-link);
 }
 
 .color-link {
     text-decoration: none;
-    color: $teal;
+    color: var(--color-primary);
     font-family: $sans-serif;
     margin-right: 1.5em;
 }
 
 .color-link:visited {
-    color: $teal;
+    color: var(--color-primary);
 }
 
 .color-link:hover {
-    color: $teal-darker;
+    color: var(--color-link-hover);
 
     .color-arrow {
-        fill: $teal-darker;
+        fill: var(--color-link-hover);
     }
 }
 
@@ -157,27 +208,27 @@ a:visited {
     margin-right: 0.75em;
     margin-bottom: 1em;
     line-height: 1.75em;
-    color: $gray-light;
+    color: var(--color-text-secondary);
 }
 
 .tag:visited {
-    color: $gray-light;
+    color: var(--color-text-secondary);
 }
 
 .tag:hover {
-    color: $gray-medium;
+    color: var(--color-text-tertiary);
 }
 
 // ARTICLE FORMATTING
 time {
     margin-right: 1.5em;
-    color: $gray-light;
+    color: var(--color-text-secondary);
 }
 
 hr {
     border: 0;
     height: 0;
-    border-bottom: 1px solid $gray-lightest;
+    border-bottom: 1px solid var(--color-border);
 }
 
 ul,
@@ -195,7 +246,7 @@ mark {
 }
 
 blockquote {
-    border-left: 4px solid $gray-lightest;
+    border-left: 4px solid var(--color-border);
     padding-left: 1.3em;
     margin-left: 0em;
     margin-top: 0em;
@@ -211,7 +262,7 @@ cite {
 
 pre {
     padding: 1em;
-    background-color: $gray-background;
+    background-color: var(--color-code-bg);
     max-width: 100%;
     overflow: scroll;
 }
@@ -219,7 +270,7 @@ pre {
 p code,
 kbd {
     font-size: 0.95rem;
-    background: $gray-background;
+    background: var(--color-code-bg);
     padding: 0.2em;
 }
 
@@ -240,13 +291,13 @@ table {
     border-spacing: 0;
 
     thead {
-        background: $gray-background;
+        background: var(--color-bg-secondary);
     }
 
     th,
     td {
         padding: 0.5em 1em;
-        border: 1px double $gray-table-border;
+        border: 1px double var(--color-border);
     }
 }
 
@@ -282,7 +333,7 @@ nav {
 
 .description {
     font-style: italic;
-    color: $gray-medium;
+    color: var(--color-text-tertiary);
     text-align: center;
     margin-bottom: 3.7em;
     margin-top: -0.75em;
@@ -315,7 +366,7 @@ nav {
 
     a {
         text-decoration: none;
-        color: $teal;
+        color: var(--color-primary);
         font-size: 0.95rem;
     }
 }
@@ -360,8 +411,8 @@ a.footnote-ref {
 // SHORTCODE CONTENT
 .twitter-tweet {
     font-family: $sans-serif !important;
-    border-left: 4px solid $teal !important;
-    color: $gray-dark !important;
+    border-left: 4px solid var(--color-primary) !important;
+    color: var(--color-text) !important;
     font-size: 1rem !important;
     font-style: italic !important;
     margin-left: 0em;
@@ -375,7 +426,7 @@ a.footnote-ref {
     }
 
     a {
-        color: $gray-dark !important;
+        color: var(--color-text) !important;
         text-decoration: underline !important;
     }
 
@@ -388,7 +439,7 @@ a.footnote-ref {
 .__h_instagram.card {
     font-family: $sans-serif !important;
     font-size: 1.1em !important;
-    border: 1px solid $gray-light;
+    border: 1px solid var(--color-text-secondary);
     margin-top: 1.2em !important;
 }
 
@@ -399,8 +450,8 @@ a.footnote-ref {
 
 .post-footer {
     font-size: 0.95rem;
-    color: $gray-light;
-    border-bottom: 1px solid $gray-lightest;
+    color: var(--color-text-secondary);
+    border-bottom: 1px solid var(--color-border);
     padding-bottom: 1.8em;
 }
 
@@ -412,16 +463,16 @@ a.footnote-ref {
 .page-footer {
     padding: 1.5em 0em 2em 0em;
     font-size: 0.95rem;
-    color: $gray-light;
+    color: var(--color-text-secondary);
 
     a {
         text-decoration: none;
-        color: $gray-light;
+        color: var(--color-text-secondary);
     }
 }
 
 .footer-divider {
-    color: $gray-lightest;
+    color: var(--color-border);
     margin-bottom: 1.5em;
 }
 
@@ -438,7 +489,7 @@ a.footnote-ref {
 .archives-list-item-date {
     width: 60px;
     margin-right: 0.25em;
-    color: $gray-light;
+    color: var(--color-text-secondary);
 }
 
 // 404 PAGE
@@ -464,7 +515,7 @@ a.footnote-ref {
     }
 
     .divider-bar {
-        color: $gray-light;
+        color: var(--color-text-secondary);
         padding: 0em 0.25em;
     }
 }
@@ -485,21 +536,33 @@ footer {
     }
 
     .social-icon>svg:hover {
-        fill: $gray-medium;
+        fill: var(--color-text-tertiary);
     }
 
     a {
         text-decoration: none;
         font-size: 0.95rem;
-        color: $gray-light;
+        color: var(--color-text-secondary);
     }
 
     a:visited {
-        color: $gray-light;
+        color: var(--color-text-secondary);
     }
 
     a:hover {
-        color: $gray-medium;
+        color: var(--color-text-tertiary);
+    }
+}
+
+// THEME TOGGLE
+#theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: var(--color-text-secondary);
+    &:hover {
+        color: var(--color-primary);
     }
 }
 
