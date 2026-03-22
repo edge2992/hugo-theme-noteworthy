@@ -28,6 +28,7 @@
 
     <!-- syntax highlight -->
     <link rel="stylesheet" href="{{ "css/syntax.css" | relURL }}" />
+    <link rel="stylesheet" href="{{ "css/syntax-dark.css" | relURL }}" />
  
     {{ with .OutputFormats.Get "RSS" }}
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
