@@ -1,6 +1,7 @@
 {{ if .Page.Store.Get "hasMermaid" }}
 <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
 <script>
-  mermaid.initialize({ startOnLoad: true, theme: 'default' });
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  mermaid.initialize({ startOnLoad: true, theme: isDark ? 'dark' : 'default' });
 </script>
 {{ end }}
