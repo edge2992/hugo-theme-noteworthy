@@ -32,7 +32,21 @@
     {{ with .OutputFormats.Get "RSS" }}
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
     {{ end }}
-    {{ partial "seo.html" . }}
+    <!-- SEO -->
+    <link rel="canonical" href="{{ .Permalink }}">
+    {{- $description := "" }}
+    {{- if .Description }}
+      {{- $description = .Description }}
+    {{- else if .IsPage }}
+      {{- $description = .Summary | plainify | truncate 200 }}
+    {{- else if .Site.Params.description }}
+      {{- $description = .Site.Params.description }}
+    {{- end }}
+    {{- with $description }}
+    <meta name="description" content="{{ . }}">
+    {{- end }}
+    {{ template "_internal/opengraph.html" . }}
+    {{ template "_internal/twitter_cards.html" . }}
 
     {{ if not hugo.IsServer }}
       {{ template "_internal/google_analytics.html" . }}
