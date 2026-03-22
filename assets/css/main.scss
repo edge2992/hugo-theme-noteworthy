@@ -25,6 +25,30 @@ $code: Menlo,Monaco,"Courier New",monospace;
 @import "vendor/normalize";
 @import "vendor/syntax";
 
+/* ACCESSIBILITY =================================================================== */
+
+.skip-to-content {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  &:focus {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: auto;
+    height: auto;
+    padding: 8px 16px;
+    background: #fff;
+    color: #313537;
+    z-index: 9999;
+    border: 2px solid $teal;
+    border-radius: 4px;
+  }
+}
+
 /* STYLES ========================================================================== */
 
 html,
