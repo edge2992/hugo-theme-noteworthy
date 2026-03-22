@@ -25,6 +25,26 @@ $code: Menlo,Monaco,"Courier New",monospace;
 @import "vendor/normalize";
 @import "vendor/syntax";
 
+/* CSS CUSTOM PROPERTIES ================================================================ */
+
+:root {
+    // Colors
+    --color-primary: #{$teal};
+    --color-primary-dark: #{$teal-darker};
+    --color-background: #{$gray-background};
+    --color-table-border: #{$gray-table-border};
+    --color-gray-lightest: #{$gray-lightest};
+    --color-gray-light: #{$gray-light};
+    --color-gray-medium: #{$gray-medium};
+    --color-gray-dark: #{$gray-dark};
+    --color-highlight: #{$highlight};
+
+    // Fonts
+    --font-serif: #{$serif};
+    --font-sans-serif: #{$sans-serif};
+    --font-code: #{$code};
+}
+
 /* STYLES ========================================================================== */
 
 html,
@@ -41,8 +61,8 @@ html {
 }
 
 body {
-    color: $gray-dark;
-    font-family: $sans-serif;
+    color: var(--color-gray-dark);
+    font-family: var(--font-sans-serif);
     margin: 0;
     font-size: 1.1rem;
 }
@@ -52,7 +72,7 @@ article p {
     a {
         text-decoration: underline;
         text-decoration-skip-ink: auto;
-        color: $gray-dark;
+        color: var(--color-gray-dark);
     }
 }
 
@@ -64,7 +84,7 @@ h1 {
     font-size: 1.9em;
     padding-top: 0.2em;
     margin: 0.5em 0em 0.75em 0em;
-    font-family: $serif;
+    font-family: var(--font-serif);
     font-weight: 600;
     line-height: 1.3em;
 }
@@ -75,7 +95,7 @@ h4,
 h5,
 h6 {
     margin: 1.25em 0em 0.75em 0em;
-    font-family: $serif;
+    font-family: var(--font-serif);
     font-weight: 600;
 }
 
@@ -93,7 +113,7 @@ h2 {
         transition: all 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
 
         &:hover {
-            box-shadow: 0 -1px 0 0 white inset, 0 -2px 0 0 $gray-dark inset;
+            box-shadow: 0 -1px 0 0 white inset, 0 -2px 0 0 var(--color-gray-dark) inset;
             transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
         }
     }
@@ -122,7 +142,7 @@ p {
 a {
     text-decoration: underline;
     text-decoration-skip-ink: auto;
-    color: $gray-dark;
+    color: var(--color-gray-dark);
 }
 
 a,
@@ -131,25 +151,25 @@ a>svg {
 }
 
 a:visited {
-    color: $gray-dark;
+    color: var(--color-gray-dark);
 }
 
 .color-link {
     text-decoration: none;
-    color: $teal;
-    font-family: $sans-serif;
+    color: var(--color-primary);
+    font-family: var(--font-sans-serif);
     margin-right: 1.5em;
 }
 
 .color-link:visited {
-    color: $teal;
+    color: var(--color-primary);
 }
 
 .color-link:hover {
-    color: $teal-darker;
+    color: var(--color-primary-dark);
 
     .color-arrow {
-        fill: $teal-darker;
+        fill: var(--color-primary-dark);
     }
 }
 
@@ -157,27 +177,27 @@ a:visited {
     margin-right: 0.75em;
     margin-bottom: 1em;
     line-height: 1.75em;
-    color: $gray-light;
+    color: var(--color-gray-light);
 }
 
 .tag:visited {
-    color: $gray-light;
+    color: var(--color-gray-light);
 }
 
 .tag:hover {
-    color: $gray-medium;
+    color: var(--color-gray-medium);
 }
 
 // ARTICLE FORMATTING
 time {
     margin-right: 1.5em;
-    color: $gray-light;
+    color: var(--color-gray-light);
 }
 
 hr {
     border: 0;
     height: 0;
-    border-bottom: 1px solid $gray-lightest;
+    border-bottom: 1px solid var(--color-gray-lightest);
 }
 
 ul,
@@ -191,11 +211,11 @@ li {
 }
 
 mark {
-    background-color: $highlight;
+    background-color: var(--color-highlight);
 }
 
 blockquote {
-    border-left: 4px solid $gray-lightest;
+    border-left: 4px solid var(--color-gray-lightest);
     padding-left: 1.3em;
     margin-left: 0em;
     margin-top: 0em;
@@ -211,7 +231,7 @@ cite {
 
 pre {
     padding: 1em;
-    background-color: $gray-background;
+    background-color: var(--color-background);
     max-width: 100%;
     overflow: scroll;
 }
@@ -219,14 +239,14 @@ pre {
 p code,
 kbd {
     font-size: 0.95rem;
-    background: $gray-background;
+    background: var(--color-background);
     padding: 0.2em;
 }
 
 code,
 pre,
 kbd {
-    font-family: $code;
+    font-family: var(--font-code);
     font-size: 0.85rem;
     line-height: 154%;
 }
@@ -240,13 +260,13 @@ table {
     border-spacing: 0;
 
     thead {
-        background: $gray-background;
+        background: var(--color-background);
     }
 
     th,
     td {
         padding: 0.5em 1em;
-        border: 1px double $gray-table-border;
+        border: 1px double var(--color-table-border);
     }
 }
 
@@ -262,7 +282,7 @@ nav {
     line-height: 1.7em;
 
     a {
-        font-family: $serif;
+        font-family: var(--font-serif);
         font-size: 1.5em;
         text-decoration: none;
         margin-top: 0.75em;
@@ -282,7 +302,7 @@ nav {
 
 .description {
     font-style: italic;
-    color: $gray-medium;
+    color: var(--color-gray-medium);
     text-align: center;
     margin-bottom: 3.7em;
     margin-top: -0.75em;
@@ -315,7 +335,7 @@ nav {
 
     a {
         text-decoration: none;
-        color: $teal;
+        color: var(--color-primary);
         font-size: 0.95rem;
     }
 }
@@ -359,9 +379,9 @@ a.footnote-ref {
 
 // SHORTCODE CONTENT
 .twitter-tweet {
-    font-family: $sans-serif !important;
-    border-left: 4px solid $teal !important;
-    color: $gray-dark !important;
+    font-family: var(--font-sans-serif) !important;
+    border-left: 4px solid var(--color-primary) !important;
+    color: var(--color-gray-dark) !important;
     font-size: 1rem !important;
     font-style: italic !important;
     margin-left: 0em;
@@ -375,7 +395,7 @@ a.footnote-ref {
     }
 
     a {
-        color: $gray-dark !important;
+        color: var(--color-gray-dark) !important;
         text-decoration: underline !important;
     }
 
@@ -386,9 +406,9 @@ a.footnote-ref {
 }
 
 .__h_instagram.card {
-    font-family: $sans-serif !important;
+    font-family: var(--font-sans-serif) !important;
     font-size: 1.1em !important;
-    border: 1px solid $gray-light;
+    border: 1px solid var(--color-gray-light);
     margin-top: 1.2em !important;
 }
 
@@ -399,8 +419,8 @@ a.footnote-ref {
 
 .post-footer {
     font-size: 0.95rem;
-    color: $gray-light;
-    border-bottom: 1px solid $gray-lightest;
+    color: var(--color-gray-light);
+    border-bottom: 1px solid var(--color-gray-lightest);
     padding-bottom: 1.8em;
 }
 
@@ -412,16 +432,16 @@ a.footnote-ref {
 .page-footer {
     padding: 1.5em 0em 2em 0em;
     font-size: 0.95rem;
-    color: $gray-light;
+    color: var(--color-gray-light);
 
     a {
         text-decoration: none;
-        color: $gray-light;
+        color: var(--color-gray-light);
     }
 }
 
 .footer-divider {
-    color: $gray-lightest;
+    color: var(--color-gray-lightest);
     margin-bottom: 1.5em;
 }
 
@@ -438,7 +458,7 @@ a.footnote-ref {
 .archives-list-item-date {
     width: 60px;
     margin-right: 0.25em;
-    color: $gray-light;
+    color: var(--color-gray-light);
 }
 
 // 404 PAGE
@@ -464,7 +484,7 @@ a.footnote-ref {
     }
 
     .divider-bar {
-        color: $gray-light;
+        color: var(--color-gray-light);
         padding: 0em 0.25em;
     }
 }
@@ -485,24 +505,57 @@ footer {
     }
 
     .social-icon>svg:hover {
-        fill: $gray-medium;
+        fill: var(--color-gray-medium);
     }
 
     a {
         text-decoration: none;
         font-size: 0.95rem;
-        color: $gray-light;
+        color: var(--color-gray-light);
     }
 
     a:visited {
-        color: $gray-light;
+        color: var(--color-gray-light);
     }
 
     a:hover {
-        color: $gray-medium;
+        color: var(--color-gray-medium);
     }
 }
 
 // BREAKPOINTS
 @import "partials/_breakpoints";
 @import "custom";
+
+// PRINT STYLES
+@media print {
+    .nav-container,
+    .mobile-footer,
+    .skip-to-content,
+    .page-footer,
+    .paginator {
+        display: none !important;
+    }
+
+    .content-container {
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: underline;
+    }
+
+    a[href]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.85em;
+        color: #666;
+    }
+
+    a[href^="#"]::after,
+    a[href^="javascript"]::after {
+        content: "";
+    }
+}
