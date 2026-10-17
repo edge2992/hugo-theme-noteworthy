@@ -1,0 +1,37 @@
+// Render Mermaid diagrams emitted by render-codeblock-mermaid.html.
+// Loaded after the vendored mermaid.min.js (both scripts are deferred).
+(function() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  mermaid.initialize({
+    startOnLoad: false,
+    securityLevel: 'strict',
+    theme: 'base',
+    themeVariables: isDark
+      ? {
+          primaryColor: '#2a2a3e',
+          primaryTextColor: '#e0e0e0',
+          primaryBorderColor: '#63BDA2',
+          lineColor: '#63BDA2',
+          secondaryColor: '#16213e',
+          tertiaryColor: '#1a1a2e',
+          background: '#1a1a2e',
+          mainBkg: '#2a2a3e',
+          nodeBorder: '#63BDA2',
+          clusterBkg: '#16213e',
+          clusterBorder: '#63BDA2',
+          titleColor: '#e0e0e0',
+          edgeLabelBackground: '#2a2a3e',
+          nodeTextColor: '#e0e0e0'
+        }
+      : {
+          primaryColor: '#e8f5e9',
+          primaryTextColor: '#313537',
+          primaryBorderColor: '#63BDA2',
+          lineColor: '#5F5F5F',
+          secondaryColor: '#f7f7f7',
+          tertiaryColor: '#fff',
+          nodeTextColor: '#313537'
+        }
+  });
+  mermaid.run({ nodes: document.querySelectorAll('.mermaid') });
+})();

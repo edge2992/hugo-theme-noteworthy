@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="{{ "css/syntax-dark.css" | relURL }}" />
  
     {{ with .OutputFormats.Get "RSS" }}
-    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+    <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink }}" title="{{ $.Site.Title }}">
     {{ end }}
     <!-- SEO -->
     <link rel="canonical" href="{{ .Permalink }}">
@@ -53,7 +53,8 @@
     {{ end }}
     <script>
       (function() {
-        var theme = localStorage.getItem('theme') || 'light';
+        var theme = localStorage.getItem('theme');
+        if (theme !== 'light' && theme !== 'dark') theme = 'light';
         document.documentElement.setAttribute('data-theme', theme);
       })();
     </script>
