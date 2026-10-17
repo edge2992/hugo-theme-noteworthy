@@ -5,6 +5,9 @@ theme = "noteworthy"
 enableRobotsTXT = true
 summaryLength = 10 # Configure how long the post summary should be on the homepage.
 
+# Do not fail CI when X or Vimeo cannot be reached while fetching embed data.
+ignoreLogs = ["shortcode-x-getremote", "shortcode-vimeo-simple"]
+
 [pagination]
   pagerSize = 4 # Set the number of posts to show before overflowing to the next page.
 
