@@ -7,7 +7,7 @@
   {{ end }}
   {{ $rssOutput := .OutputFormats.Get "RSS" }}
   {{ if $rssOutput }}
-    <a class="color-link nav-link" href="{{ $rssOutput.Permalink }}" target="_blank" rel="noopener" type="application/rss+xml">RSS</a>
+    <a class="color-link nav-link" href="{{ $rssOutput.Permalink }}" target="_blank" rel="noopener noreferrer" type="application/rss+xml">RSS</a>
   {{ end }}
   {{ partial "theme-toggle.html" . }}
 </div>

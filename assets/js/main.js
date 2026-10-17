@@ -22,7 +22,8 @@ function initThemeToggle() {
   const moonIcon = document.getElementById('theme-icon-moon');
 
   function getPreferredTheme() {
-    return localStorage.getItem('theme') || 'light';
+    const theme = localStorage.getItem('theme');
+    return theme === 'light' || theme === 'dark' ? theme : 'light';
   }
 
   function setTheme(theme) {
