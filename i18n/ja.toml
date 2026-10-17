@@ -21,3 +21,21 @@ other = "Noteworthy theme"
 
 [built_with_hugo]
 other = "Hugo で構築"
+
+[heading_anchor]
+other = "このセクションへのリンク"
+
+[note]
+other = "メモ"
+
+[tip]
+other = "ヒント"
+
+[important]
+other = "重要"
+
+[warning]
+other = "警告"
+
+[caution]
+other = "注意"

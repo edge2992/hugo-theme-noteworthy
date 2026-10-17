@@ -1,0 +1,29 @@
+{{ define "main" }}
+
+<h1 class="post-title">{{ .Title }}</h1>
+    {{ if .Date }}
+    <time>{{ .Date.Format "January 2, 2006" }}</time>
+    {{ end }}
+    <div>
+        <p>
+        {{ .Content }}
+        </p>
+    </div>
+    {{ partial "disqus.html" . }}
+
+    {{ if site.Params.enableKofi }}
+    <p class="kofi-button">
+        <a href="https://ko-fi.com/{{ site.Params.Kofi }}" target="_blank" rel="noopener noreferrer">Support Me on Ko-fi</a>
+    </p>
+    {{ end }}
+
+    <div class="page-footer">
+        {{if .Params.tags}}
+        <hr class="footer-divider">
+        {{ range .Params.tags }}
+            <a class="tag" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">#{{.}}</a>
+        {{ end }}
+      {{ end }}
+    </div>
+
+{{end}}

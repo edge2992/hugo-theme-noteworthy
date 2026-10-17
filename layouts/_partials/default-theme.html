@@ -1,0 +1,7 @@
+{{- /* Returns the color scheme used when the visitor has not chosen one: light, dark, or auto (follow the OS). */ -}}
+{{- $theme := site.Params.defaultTheme | default "light" | lower -}}
+{{- if not (in (slice "light" "dark" "auto") $theme) -}}
+  {{- warnf "noteworthy: params.defaultTheme must be light, dark, or auto (got %q); using light" $theme -}}
+  {{- $theme = "light" -}}
+{{- end -}}
+{{- return $theme -}}

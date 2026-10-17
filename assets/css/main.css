@@ -603,6 +603,104 @@ footer a:hover {
   color: var(--color-primary);
 }
 
+/* THEME TOGGLE ICONS: show the icon for the active theme */
+#theme-icon-sun,
+[data-theme="dark"] #theme-icon-moon {
+  display: block;
+}
+
+#theme-icon-moon,
+[data-theme="dark"] #theme-icon-sun {
+  display: none;
+}
+
+/* IMAGES: keep the aspect ratio when width/height attributes are set */
+img[width][height] {
+  height: auto;
+}
+
+/* HEADING ANCHORS */
+.heading-anchor {
+  margin-left: 0.3em;
+  color: var(--color-text-tertiary);
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.heading-anchor::after {
+  content: "#";
+}
+
+h1:hover > .heading-anchor,
+h2:hover > .heading-anchor,
+h3:hover > .heading-anchor,
+h4:hover > .heading-anchor,
+h5:hover > .heading-anchor,
+h6:hover > .heading-anchor,
+.heading-anchor:focus {
+  opacity: 1;
+}
+
+.heading-anchor:hover {
+  color: var(--color-primary);
+}
+
+/* ALERTS: > [!NOTE], > [!TIP], > [!IMPORTANT], > [!WARNING], > [!CAUTION] */
+.alert {
+  --alert-color: var(--color-primary);
+  border-left-color: var(--alert-color);
+  background-color: var(--color-bg-secondary);
+  padding: 0.6em 1em 0.6em 1.3em;
+  border-radius: 0 4px 4px 0;
+}
+
+.alert-heading {
+  margin: 0 0 0.3em;
+  font-weight: 700;
+  color: var(--alert-color);
+}
+
+.alert-note {
+  --alert-color: #3b82c4;
+}
+
+.alert-tip {
+  --alert-color: var(--color-primary-dark);
+}
+
+.alert-important {
+  --alert-color: #8250df;
+}
+
+.alert-warning {
+  --alert-color: #b7791f;
+}
+
+.alert-caution {
+  --alert-color: #cf3a3a;
+}
+
+[data-theme="dark"] .alert-note {
+  --alert-color: #6cb0f0;
+}
+
+[data-theme="dark"] .alert-tip {
+  --alert-color: var(--color-primary);
+}
+
+[data-theme="dark"] .alert-important {
+  --alert-color: #b392f0;
+}
+
+[data-theme="dark"] .alert-warning {
+  --alert-color: #e3b341;
+}
+
+[data-theme="dark"] .alert-caution {
+  --alert-color: #f47067;
+}
+
 /* MERMAID DIAGRAMS */
 .mermaid {
   text-align: center;
