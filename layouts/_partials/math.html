@@ -1,0 +1,7 @@
+{{- /* KaTeX styles for math rendered by render-passthrough.html. List pages may show math in
+       summaries, so they load the styles when params.math is set. */ -}}
+{{ if or (.Store.Get "hasMath") (and (not .IsPage) (.Param "math")) }}
+{{ $katex := resources.Get "css/vendor/katex/katex.min.css" | fingerprint }}
+{{ range resources.Match "css/vendor/katex/fonts/*.woff2" }}{{ .Publish }}{{ end }}
+<link rel="stylesheet" href="{{ $katex.RelPermalink }}" integrity="{{ $katex.Data.Integrity }}" crossorigin="anonymous">
+{{ end }}

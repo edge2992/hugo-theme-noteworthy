@@ -21,3 +21,21 @@ other = "Noteworthy theme"
 
 [built_with_hugo]
 other = "Built with Hugo"
+
+[heading_anchor]
+other = "Link to this section"
+
+[note]
+other = "Note"
+
+[tip]
+other = "Tip"
+
+[important]
+other = "Important"
+
+[warning]
+other = "Warning"
+
+[caution]
+other = "Caution"

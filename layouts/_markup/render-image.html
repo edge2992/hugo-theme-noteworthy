@@ -1,0 +1,29 @@
+{{- /* Based on Hugo's embedded image render hook. Resolves page and global resources, and adds
+       lazy loading plus intrinsic dimensions (to avoid layout shift) when the image is a resource. */ -}}
+{{- $u := urls.Parse .Destination -}}
+{{- $src := $u.String -}}
+{{- $res := false -}}
+{{- if not $u.IsAbs -}}
+  {{- $path := strings.TrimPrefix "./" $u.Path -}}
+  {{- with or (.PageInner.Resources.Get $path) (resources.Get $path) -}}
+    {{- $res = . -}}
+    {{- $src = .RelPermalink -}}
+    {{- with $u.RawQuery -}}
+      {{- $src = printf "%s?%s" $src . -}}
+    {{- end -}}
+    {{- with $u.Fragment -}}
+      {{- $src = printf "%s#%s" $src . -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+<img src="{{ $src }}" alt="{{ .PlainText }}"
+  {{- with .Title }} title="{{ . }}" {{- end }} loading="lazy" decoding="async"
+  {{- with $res }}
+    {{- if and (eq .ResourceType "image") (in (slice "jpeg" "png" "gif" "webp") .MediaType.SubType) }} width="{{ .Width }}" height="{{ .Height }}" {{- end }}
+  {{- end }}
+  {{- range $k, $v := .Attributes -}}
+    {{- if $v -}}
+      {{- printf " %s=%q" $k ($v | transform.HTMLEscape) | safeHTMLAttr -}}
+    {{- end -}}
+  {{- end -}}>
+{{- /**/ -}}

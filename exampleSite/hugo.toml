@@ -26,8 +26,19 @@ summaryLength = 10 # Configure how long the post summary should be on the homepa
 [markup.goldmark.renderer]
     unsafe = true
 
+# Pass LaTeX through untouched so the theme can render it with KaTeX at build time.
+[markup.goldmark.extensions.passthrough]
+    enable = true
+    [markup.goldmark.extensions.passthrough.delimiters]
+        block = [['\[', '\]'], ['$$', '$$']]
+        inline = [['\(', '\)']]
+
 [params]
+    # Load the KaTeX styles on list pages too, for math that appears in summaries.
     math = true
+
+    # Color scheme used until the visitor picks one: "light", "dark", or "auto" (follow the OS).
+    defaultTheme = "light"
     # Blog description at the top of the homepage. Supports markdown.
     description = "Noteworthy is a minimalist Hugo theme, perfect for writers and bloggers."
 

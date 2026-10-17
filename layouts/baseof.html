@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<!-- Default base template. Other templates define the "main" portion in this template -->
+<html lang="{{ site.Language.Locale | default "en" }}" data-default-theme="{{ partial "default-theme.html" . }}">
+    {{ partial "head.html" . }}
+    <body>
+        <a class="skip-to-content" href="#content">Skip to content</a>
+        {{ partial "nav.html" . }}
+        <div id="content" class="content-container">
+        {{ block "main" . }}
+        {{ end }}
+        </div>
+        {{ partial "footer-mobile.html" . }}
+        {{ $script := resources.Get "js/main.js" | minify | fingerprint -}}
+        <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}" crossorigin="anonymous"></script>
+    </body>
+</html>

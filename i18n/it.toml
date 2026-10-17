@@ -21,3 +21,21 @@ other = "Tema Noteworthy"
 
 [built_with_hugo]
 other = "Realizzato con Hugo"
+
+[heading_anchor]
+other = "Link a questa sezione"
+
+[note]
+other = "Nota"
+
+[tip]
+other = "Suggerimento"
+
+[important]
+other = "Importante"
+
+[warning]
+other = "Avviso"
+
+[caution]
+other = "Attenzione"

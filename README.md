@@ -11,9 +11,10 @@ Noteworthy is a minimalist Hugo theme for writers and bloggers.
 * Google Analytics and Disqus integration
 * Ko-fi donation button
 * Syntax highlighting
-* Mathematical notations with KaTex
+* Mathematical notations with KaTeX, rendered at build time (no client-side JS)
 * Mermaid diagrams
-* Light and dark mode
+* Light and dark mode (optionally following the OS setting)
+* Alerts (`> [!NOTE]`), heading anchors, and lazy-loaded images
 * About, Tags, and Archives pages
 * RSS feeds
 * Social media links
@@ -135,6 +136,55 @@ If you'd like to enable a Ko-fi button on your posts, enable it in the config fi
 enableKofi = true
 kofi = ""
 ```
+
+
+## Dark mode
+
+The visitor can switch between light and dark with the toggle in the sidebar, and the choice is remembered.
+Set the scheme used until they choose:
+
+```
+[params]
+  # "light" (default), "dark", or "auto" (follow the OS setting)
+  defaultTheme = "auto"
+```
+
+
+## Math
+
+Math is rendered with KaTeX while the site is built, using Hugo's [`transform.ToMath`](https://gohugo.io/functions/transform/tomath/). Enable the Goldmark passthrough extension in your `hugo.toml`:
+
+```
+[markup.goldmark.extensions.passthrough]
+  enable = true
+  [markup.goldmark.extensions.passthrough.delimiters]
+    block = [['\[', '\]'], ['$$', '$$']]
+    inline = [['\(', '\)']]
+```
+
+The KaTeX styles are loaded only on pages that contain math. Set `math = true` under `[params]` to load them on list pages too, for math that appears in summaries.
+
+
+## Mermaid diagrams
+
+Fence a code block with `mermaid`. Mermaid is bundled with the theme and loaded only on pages that contain a diagram.
+
+
+## Alerts
+
+GitHub-style alerts are rendered as styled blockquotes:
+
+```
+> [!NOTE]
+> Useful information that users should know, even when skimming content.
+```
+
+The types are `NOTE`, `TIP`, `IMPORTANT`, `WARNING`, and `CAUTION`.
+
+
+## Adding tags to `<head>`
+
+Create `layouts/_partials/head-extra.html` in your site. The theme includes it at the end of `<head>`.
 
 
 ## Custom styles
