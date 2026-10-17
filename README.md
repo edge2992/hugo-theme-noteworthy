@@ -2,6 +2,8 @@
 
 Noteworthy is a minimalist Hugo theme for writers and bloggers.
 
+[![Build exampleSite](https://github.com/edge2992/hugo-theme-noteworthy/actions/workflows/build.yml/badge.svg)](https://github.com/edge2992/hugo-theme-noteworthy/actions/workflows/build.yml)
+
 ![Noteworthy desktop screenshot](https://github.com/kimcc/hugo-theme-noteworthy/blob/master/images/screenshot.png)
 
 
@@ -197,6 +199,42 @@ To override them, create `assets/css/custom.css` in your site. It is bundled aft
   --font-sans-serif: "Kinto Sans", "Noto Sans", sans-serif;
 }
 ```
+
+
+## Maintenance
+
+### CI
+
+[`.github/workflows/build.yml`](.github/workflows/build.yml) builds the exampleSite with the `min_version` in `theme.toml` and with the latest Hugo release:
+
+* on every pull request and push to `master`
+* on the 1st of every month, to catch new deprecations early (a failure opens an issue)
+
+The build fails on any `WARN` or `ERROR`. The list of unused templates is uploaded as an artifact.
+When you raise `min_version`, update the matrix in the workflow as well.
+
+To run the same build locally:
+
+```
+hugo build -s exampleSite --themesDir ../.. -t hugo-theme-noteworthy \
+  -d /tmp/noteworthy-public --logLevel warn --printPathWarnings --printUnusedTemplates
+```
+
+### Quarterly review
+
+Once a quarter (January, April, July, October):
+
+1. Read the [Hugo release notes](https://github.com/gohugoio/hugo/releases) since the last review and note deprecations that affect the theme.
+2. Check the [Hugo security advisories](https://github.com/gohugoio/hugo/security/advisories):
+
+   ```
+   gh api repos/gohugoio/hugo/security-advisories --jq '.[] | [.published_at[:10], .severity, .summary] | @tsv'
+   ```
+
+3. Update the Hugo version used to deploy the site (for example `HUGO_VERSION` in `netlify.toml`) to the latest stable release.
+4. Check for updates to the vendored libraries and update them if needed:
+   * Mermaid: `assets/js/vendor/mermaid/` (`npm view mermaid@11 version`)
+   * KaTeX styles and fonts: `assets/css/vendor/katex/`. Keep them on the KaTeX version that Hugo embeds (see `internal/warpc/js/package.json` in the Hugo repository for the release you deploy with).
 
 
 ## License
