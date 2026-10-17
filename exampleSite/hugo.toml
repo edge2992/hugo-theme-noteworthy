@@ -1,16 +1,20 @@
 baseURL = "https://example.com"
-languageCode = "en-us"
+locale = "en-US"
 title = "Noteworthy"
 theme = "noteworthy"
 enableRobotsTXT = true
-paginate = 4 # Set the number of posts to show before overflowing to the next page.
 summaryLength = 10 # Configure how long the post summary should be on the homepage.
 
-# Add your Google Analytics identifier (GA4): G-XXXXXXXXXX
-googleAnalytics = ""
+[pagination]
+  pagerSize = 4 # Set the number of posts to show before overflowing to the next page.
 
-# Add your Disqus shortname here.
-disqusShortname = ""
+[services]
+  # Add your Google Analytics identifier (GA4): G-XXXXXXXXXX
+  [services.googleAnalytics]
+    id = ""
+  # Add your Disqus shortname here.
+  [services.disqus]
+    shortname = ""
 
 [taxonomies]
   tag = "tags"
@@ -102,24 +106,22 @@ disqusShortname = ""
     url = "/archives/"
     weight = 3
 
-# Privacy configurations: https://gohugo.io/about/hugo-and-gdpr/
+# Privacy configurations: https://gohugo.io/configuration/privacy/
 [privacy]
   [privacy.disqus]
     disable = false
   [privacy.googleAnalytics]
-    anonymizeIP = true
     disable = false
-    respectDoNotTrack = false
-    useSessionStorage = false
+    respectDoNotTrack = true
   [privacy.instagram]
     disable = false
-    simple = false
-  [privacy.twitter]
+  [privacy.x]
     disable = false
-    enableDNT = false
+    enableDNT = true
     simple = false
   [privacy.vimeo]
     disable = false
+    enableDNT = true
     simple = false
   [privacy.youtube]
     disable = false

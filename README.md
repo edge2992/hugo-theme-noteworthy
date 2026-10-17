@@ -12,10 +12,17 @@ Noteworthy is a minimalist Hugo theme for writers and bloggers.
 * Ko-fi donation button
 * Syntax highlighting
 * Mathematical notations with KaTex
+* Mermaid diagrams
+* Light and dark mode
 * About, Tags, and Archives pages
 * RSS feeds
 * Social media links
-* SCSS for styling
+* Plain CSS with custom properties (no Sass or Hugo extended required)
+
+
+## Requirements
+
+* Hugo 0.158.0 or later
 
 
 ## Installation
@@ -23,7 +30,7 @@ Noteworthy is a minimalist Hugo theme for writers and bloggers.
 Navigate to the root directory of your Hugo site and clone this repository.
 
 ```
-git clone https://github.com/kimcc/hugo-theme-noteworthy.git themes/noteworthy
+git clone https://github.com/edge2992/hugo-theme-noteworthy.git themes/noteworthy
 ```
 
 Refer to the [Hugo docs](https://gohugo.io/getting-started/quick-start/) for more information.
@@ -57,7 +64,7 @@ Set `showReadMore = false` to `true` in the config file to have a "read more" li
 
 ## Social media accounts
 
-In the `params` section of the `config.toml` file, you can add links to your social media accounts. Simply remove the ones that you don't want to include, and their icons will disappear from the site.
+In the `params` section of the `hugo.toml` file, you can add links to your social media accounts. Simply remove the ones that you don't want to include, and their icons will disappear from the site.
 
 ```
 # Main
@@ -107,14 +114,16 @@ tripadvisor = "#"
 
 ## Disqus and Google Analytics
 
-Add your Disqus shortname and Google Analytics identifier in the `config.toml` file.
+Add your Disqus shortname and Google Analytics identifier in the `hugo.toml` file.
+Use the [privacy settings](https://gohugo.io/configuration/privacy/) to control how they behave.
 
 ```
-# Add your Disqus shortname here.
-disqusShortname = ""
-
-# Add your Google Analytics identifier: UA-XXXXXXXX-X
-googleAnalytics = ""
+[services]
+  [services.disqus]
+    shortname = ""
+  # Google Analytics identifier (GA4): G-XXXXXXXXXX
+  [services.googleAnalytics]
+    id = ""
 ```
 
 ## Ko-fi donation button
@@ -125,6 +134,18 @@ If you'd like to enable a Ko-fi button on your posts, enable it in the config fi
 # Set enableKofi to true to enable the Ko-fi support button. Add your Ko-fi ID to link to your account.
 enableKofi = true
 kofi = ""
+```
+
+
+## Custom styles
+
+The theme styles are plain CSS that use custom properties (`--color-*`, `--font-*`).
+To override them, create `assets/css/custom.css` in your site. It is bundled after the theme styles.
+
+```css
+:root {
+  --font-sans-serif: "Kinto Sans", "Noto Sans", sans-serif;
+}
 ```
 
 

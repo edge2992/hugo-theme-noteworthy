@@ -3,8 +3,6 @@ author: Hugo Authors
 title: Math Typesetting
 date: 2019-12-12
 description: A brief guide to setup KaTeX
-markup: mmark
-type: "post"
 ---
 
 Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.
