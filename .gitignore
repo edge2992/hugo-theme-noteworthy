@@ -1,2 +1,4 @@
 .claude/worktrees/
 .serena/
+resources/_gen/
+.hugo_build.lock

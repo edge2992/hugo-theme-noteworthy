@@ -9,7 +9,7 @@
         {{ .Content }}
         </p>
     </div>
-    {{ template "_internal/disqus.html" . }}
+    {{ partial "disqus.html" . }}
 
     {{ if .Site.Params.enableKofi }}
     <p class="kofi-button">
