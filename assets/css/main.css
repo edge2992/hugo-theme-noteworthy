@@ -614,7 +614,11 @@ footer a:hover {
   display: none;
 }
 
-/* IMAGES: keep the aspect ratio when width/height attributes are set */
+/* IMAGES: fit the content column; keep the aspect ratio when width/height attributes are set */
+img {
+  max-width: 100%;
+}
+
 img[width][height] {
   height: auto;
 }
